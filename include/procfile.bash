@@ -43,7 +43,7 @@ procfile-exec() {
 	exec setuidgid "$unprivileged_user" $(eval echo $@)
 }
 
-privileged-procfile-exec() {
+procfile-rootexec() {
 	declare desc="Run as privileged user with Heroku-like env"
 	export HOME="$app_path"
 	usermod --home "$app_path" "root" > /dev/null 2>&1

@@ -43,6 +43,16 @@ procfile-exec() {
 	exec setuidgid "$unprivileged_user" $(eval echo $@)
 }
 
+privileged-procfile-exec() {
+	declare desc="Run as privileged user with Heroku-like env"
+	export HOME="$app_path"
+	usermod --home "$app_path" "root" > /dev/null 2>&1
+	procfile-load-env
+	procfile-load-profile
+	cd "$app_path"
+	$(eval echo $@)
+}
+
 procfile-types() {
 	title "Discovering process types"
 	if [[ -f "$app_path/Procfile" ]]; then

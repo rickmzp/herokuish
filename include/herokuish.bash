@@ -143,6 +143,7 @@ main() {
 	cmd-export-ns procfile "Use Procfiles and run app commands"
 	cmd-export procfile-start
 	cmd-export procfile-exec
+	cmd-export procfile-rootexec
 	cmd-export procfile-parse
 
 	case "$SELF" in
